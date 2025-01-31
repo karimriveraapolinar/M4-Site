@@ -20,7 +20,21 @@ const TRAVEL_COST = 2 //cost of travel per mile
 window.addEventListener("load", setupForm)
 
 // set the form's default values
+function setupForm() {
+  document.getElementById("photoNum").value = 1
+  document.getElementById("photoHrs").value = 2
+  document.getElementById("makeBook").checked = false
+  document.getElementById("photoRights").checked = false
+  document.getElementById("photoDist").value = 0
+  getEstimate()
 
+  // Add event handlers for each input control
+  document.getElementById("photoNum").onchange = getEstimate
+  document.getElementById("photoHrs").onchange = getEstimate
+  document.getElementById("photoDist").onchange = getEstimate
+  document.getElementById("makeBook").onchange = getEstimate
+  document.getElementById("photoRights").onchange = getEstimate
+}
 // estimate the total cost of the service
 function getEstimate() {
   let totalCost = 0
@@ -43,19 +57,4 @@ function getEstimate() {
 
   // Display the total cost estimate
   document.getElementById("estimate").innerHTML = "$" + totalCost
-}
-function setupForm() {
-  document.getElementById("photoNum").value = 1
-  document.getElementById("photoHrs").value = 2
-  document.getElementById("makeBook").checked = false
-  document.getElementById("photoRights").checked = false
-  document.getElementById("photoDist").value = 0
-  getEstimate()
-
-  // Add event handlers for each input control
-  document.getElementById("photoNum").onchange = getEstimate
-  document.getElementById("photoHrs").onchange = getEstimate
-  document.getElementById("photoDist").onchange = getEstimate
-  document.getElementById("makeBook").onchange = getEstimate
-  document.getElementById("photoRights").onchange = getEstimate
 }
